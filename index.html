@@ -45,11 +45,11 @@
   function cambiarTexto(texto, complemento) {
     if (complemento === 'complemento1') {
       primerComplemento = texto;
-      const nuevaUrl = `${urlOriginal}/${primerComplemento}/${segundoComplemento}`;
+      const nuevaUrl = `${urlOriginal}/${primerComplemento}`;
       milink.setAttribute("href", nuevaUrl);
     } else {
       segundoComplemento = texto;
-      const nuevaUrl = `${urlOriginal}/${primerComplemento}/${segundoComplemento}`;
+      const nuevaUrl = `${urlOriginal}/${primerComplemento}`;
       milink.setAttribute("href", nuevaUrl);
     }
   }
