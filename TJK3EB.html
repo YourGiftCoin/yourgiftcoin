@@ -1,36 +1,37 @@
-<div>
-  <h1>URL</h1>
-  <!-- Esto se modifica visualmente para que el usuario sepa a donde va a ir. -->
-  <h2>http://ejemplo.com/<span id="spanData1"></span>/<span id="spanData2"></span></h2>
-  <!-- Estos son los inputs de data. -->
-  <input type="text"id="data1">
-  <input type="text"id="data2">
-  <!-- Este botón hará la redirección -->
-  <button id="ir">Ir</button>
+<a id="milink" href='https://www.stackoverflow.com'>Visitar página</a>
 
-</div>
-// Variables para la modificación de URL
-var data1 = ''
-var data2 = ''
+<form action="">
+  parte 1 link: <input id="complemento1" type="text" name="Complemento del link 1">
+  <br>
+  <br>
+  parte 2 link: <input id="complemento2" type="text" name="Complemento del link 2">
+</form>
+<script>
+  const milink = document.getElementById("milink");
+  const complemento1 = document.getElementById("complemento1");
+  const complemento2 = document.getElementById("complemento2");
+  const urlOriginal = milink.getAttribute("href");
+  let primerComplemento = "";
+  let segundoComplemento = "";
 
-// Al usar un tecla y levantarla
-$('#data1').keyup(function(){
-    // Modificar la URL que se ve
-  $('#spanData1').text($('#data1').val())
-  // Guardar el dato en la variable correspondiente
-  data1 = $('#data1').val();
-})
+  complemento1.addEventListener("input", configurarVariables);
+  complemento2.addEventListener("input", configurarVariables);
 
-// Hace lo mismo que el anterior pero para el segundo
-$('#data2').keyup(function(){
-  $('#spanData2').text($('#data2').val())
-  data2 = $('#data2').val();
-})
+  function configurarVariables(e) {
+    const valor = this.value;
+    const id = this.getAttribute("id");
+    cambiarTexto(valor, id)
+  }
 
-//Al hacer click en el boton ir
-$('#ir').click(function(){
-    // Crear la URL para la redirección y...
-    var url = 'http://ejemplo.com/' + data1 + '/' + data2;
-  // Hacer la Redirección en una ventana nueva
-  window.open(url, '_blank');
-})
+  function cambiarTexto(texto, complemento) {
+    if (complemento === 'complemento1') {
+      primerComplemento = texto;
+      const nuevaUrl = `${urlOriginal}/${primerComplemento}/${segundoComplemento}`;
+      milink.setAttribute("href", nuevaUrl);
+    } else {
+      segundoComplemento = texto;
+      const nuevaUrl = `${urlOriginal}/${primerComplemento}/${segundoComplemento}`;
+      milink.setAttribute("href", nuevaUrl);
+    }
+  }
+</script>
