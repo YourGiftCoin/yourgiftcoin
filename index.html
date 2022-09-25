@@ -24,3 +24,25 @@
   <br>
   <br>
 </form>
+<script>
+  const milink = document.getElementById("milink");
+  const complemento1 = document.getElementById("complemento1");
+  const urlOriginal = milink.getAttribute("href");
+  let primerComplemento = "";
+  complemento1.addEventListener("input", configurarVariables);
+
+  function configurarVariables(e) {
+    const valor = this.value;
+    const id = this.getAttribute("id");
+    cambiarTexto(valor, id)
+  }
+
+  function cambiarTexto(texto, complemento) {
+    if (complemento === 'complemento1') {
+      primerComplemento = texto;
+      const nuevaUrl = `${urlOriginal}/${primerComplemento}`;
+      milink.setAttribute("href", nuevaUrl);
+    } else {
+    }
+  }
+</script>
