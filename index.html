@@ -20,16 +20,21 @@
   <br>
 <a id="milink" href='https://yourgiftcoin.github.io/yourgiftcoin'>Insert Code</a>
 <form action="">
-  Codigo: <input id="complemento" type="text" name="complemento del link">
+  parte 1 link: <input id="complemento1" type="text" name="Complemento del link 1">
   <br>
   <br>
+  parte 2 link: <input id="complemento2" type="text" name="Complemento del link 2">
 </form>
 <script>
   const milink = document.getElementById("milink");
   const complemento1 = document.getElementById("complemento1");
+  const complemento2 = document.getElementById("complemento2");
   const urlOriginal = milink.getAttribute("href");
   let primerComplemento = "";
+  let segundoComplemento = "";
+
   complemento1.addEventListener("input", configurarVariables);
+  complemento2.addEventListener("input", configurarVariables);
 
   function configurarVariables(e) {
     const valor = this.value;
@@ -40,9 +45,12 @@
   function cambiarTexto(texto, complemento) {
     if (complemento === 'complemento1') {
       primerComplemento = texto;
-      const nuevaUrl = `${urlOriginal}/${primerComplemento}`;
+      const nuevaUrl = `${urlOriginal}/${primerComplemento}/${segundoComplemento}`;
       milink.setAttribute("href", nuevaUrl);
     } else {
+      segundoComplemento = texto;
+      const nuevaUrl = `${urlOriginal}/${primerComplemento}/${segundoComplemento}`;
+      milink.setAttribute("href", nuevaUrl);
     }
   }
 </script>
